@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Simulator | DES, S-DES, AES, S-AES</title>
+    <meta name="description" content="Aplikasi web simulasi kriptografi simetris — Data Encryption Standard (DES), Simplified DES (S-DES), Advanced Encryption Standard (AES-128), dan Simplified AES (S-AES) dengan tampilan langkah perhitungan lengkap.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=1784639547585">
+</head>
+<body>
+
+    <!-- Background floating orbs -->
+    <div class="bg-effects">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+    </div>
+
+    <!-- ===== Navbar ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a class="navbar-brand" href="#" data-nav="home">
+                <div class="brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <span class="brand-text">Crypto<span>Sim</span></span>
+            </a>
+            <ul class="navbar-links" id="nav-links">
+                <li><a href="#des" data-nav="des">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    DES
+                </a></li>
+                <li><a href="#s-des" data-nav="s-des">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                    S-DES
+                </a></li>
+                <li><a href="#aes" data-nav="aes">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    AES
+                </a></li>
+                <li><a href="#s-aes" data-nav="s-aes">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/></svg>
+                    S-AES
+                </a></li>
+            </ul>
+            <button class="nav-hamburger" id="nav-hamburger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== Pages Container ===== -->
+    <div id="pages-container">
+
+        <!-- ===== Landing Page ===== -->
+        <div class="page active" id="page-home">
+            <div class="container">
+                <section class="hero">
+                    <div class="hero-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        UAS Kriptografi — Semester Genap 2025/2026
+                    </div>
+                    <h1>Web Simulasi Algoritma<br><span class="gradient-text">Kriptografi Simetris</span></h1>
+                    <p class="hero-subtitle">
+                        Eksplorasi dan visualisasi empat algoritma enkripsi-dekripsi simetris secara interaktif
+                        dengan tampilan proses perhitungan step-by-step yang lengkap dan rinci.
+                    </p>
+                </section>
+
+                <div class="modules-grid">
+                    <!-- DES Card -->
+                    <a class="module-card" href="#des">
+                        <div class="module-card-icon des">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                        </div>
+                        <h3>Data Encryption Standard</h3>
+                        <p>Algoritma block cipher 64-bit dengan 16 ronde Feistel, menggunakan 56-bit key efektif dan operasi permutasi, substitusi, serta XOR.</p>
+                        <div class="module-card-meta">
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                64-bit Block
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.73 7.73L15 8"/><path d="M16 16a4 4 0 0 1-8 0c0-1.38.71-2.6 1.79-3.31"/><path d="M4.5 12.5 3 14l2 2-2 2 3 3 2-2 2-2-1.5-1.5"/></svg>
+                                64-bit Key
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                16 Rounds
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- S-DES Card -->
+                    <a class="module-card" href="#s-des">
+                        <div class="module-card-icon sdes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                        </div>
+                        <h3>Simplified DES</h3>
+                        <p>Versi sederhana dari DES untuk tujuan edukasi dengan blok 8-bit, key 10-bit, dan 2 ronde Feistel. Ideal untuk memahami konsep dasar.</p>
+                        <div class="module-card-meta">
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                8-bit Block
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.73 7.73L15 8"/><path d="M16 16a4 4 0 0 1-8 0c0-1.38.71-2.6 1.79-3.31"/><path d="M4.5 12.5 3 14l2 2-2 2 3 3 2-2 2-2-1.5-1.5"/></svg>
+                                10-bit Key
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                2 Rounds
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- AES Card -->
+                    <a class="module-card" href="#aes">
+                        <div class="module-card-icon aes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                        </div>
+                        <h3>Advanced Encryption Standard</h3>
+                        <p>Standar enkripsi modern dengan blok 128-bit, key 128-bit, dan 10 ronde transformasi. Menggunakan state matrix 4x4 byte dan operasi di GF(2^8).</p>
+                        <div class="module-card-meta">
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                128-bit Block
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.73 7.73L15 8"/><path d="M16 16a4 4 0 0 1-8 0c0-1.38.71-2.6 1.79-3.31"/><path d="M4.5 12.5 3 14l2 2-2 2 3 3 2-2 2-2-1.5-1.5"/></svg>
+                                128-bit Key
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                10 Rounds
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- S-AES Card -->
+                    <a class="module-card" href="#s-aes">
+                        <div class="module-card-icon saes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/></svg>
+                        </div>
+                        <h3>Simplified AES</h3>
+                        <p>Versi edukasi dari AES dengan blok 16-bit, key 16-bit, dan 2 ronde. Menggunakan state matrix 2x2 nibble dan operasi di GF(2^4).</p>
+                        <div class="module-card-meta">
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                16-bit Block
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.73 7.73L15 8"/><path d="M16 16a4 4 0 0 1-8 0c0-1.38.71-2.6 1.79-3.31"/><path d="M4.5 12.5 3 14l2 2-2 2 3 3 2-2 2-2-1.5-1.5"/></svg>
+                                16-bit Key
+                            </span>
+                            <span class="meta-chip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                2 Rounds
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DES Page ===== -->
+        <div class="page" id="page-des">
+            <div class="container">
+                <div class="module-header">
+                    <a class="module-back" href="#" data-nav="home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Kembali
+                    </a>
+                    <h1>DES <span class="accent">Simulator</span></h1>
+                    <p class="module-subtitle">Data Encryption Standard — 64-bit Block Cipher with 16 Feistel Rounds</p>
+                </div>
+                <div id="des-module"></div>
+            </div>
+        </div>
+
+        <!-- ===== S-DES Page ===== -->
+        <div class="page" id="page-s-des">
+            <div class="container">
+                <div class="module-header">
+                    <a class="module-back" href="#" data-nav="home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Kembali
+                    </a>
+                    <h1>S-DES <span class="accent">Simulator</span></h1>
+                    <p class="module-subtitle">Simplified DES — 8-bit Block Cipher with 2 Feistel Rounds</p>
+                </div>
+                <div id="sdes-module"></div>
+            </div>
+        </div>
+
+        <!-- ===== AES Page ===== -->
+        <div class="page" id="page-aes">
+            <div class="container">
+                <div class="module-header">
+                    <a class="module-back" href="#" data-nav="home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Kembali
+                    </a>
+                    <h1>AES-128 <span class="accent">Simulator</span></h1>
+                    <p class="module-subtitle">Advanced Encryption Standard — 128-bit Block Cipher with 10 Rounds</p>
+                </div>
+                <div id="aes-module"></div>
+            </div>
+        </div>
+
+        <!-- ===== S-AES Page ===== -->
+        <div class="page" id="page-s-aes">
+            <div class="container">
+                <div class="module-header">
+                    <a class="module-back" href="#" data-nav="home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Kembali
+                    </a>
+                    <h1>S-AES <span class="accent">Simulator</span></h1>
+                    <p class="module-subtitle">Simplified AES — 16-bit Block Cipher with 2 Rounds</p>
+                </div>
+                <div id="saes-module"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="container">
+            <p>Web Simulasi Algoritma Kriptografi DES, S-DES, AES, dan S-AES</p>
+            <p style="margin-top:4px;">Mata Kuliah Kriptografi &middot; Semester Genap 2025/2026</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/des-core.js"></script>
+    <script src="js/sdes-core.js"></script>
+    <script src="js/aes-core.js"></script>
+    <script src="js/saes-core.js"></script>
+    <script src="js/des-ui.js"></script>
+    <script src="js/sdes-ui.js"></script>
+    <script src="js/aes-ui.js"></script>
+    <script src="js/saes-ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
