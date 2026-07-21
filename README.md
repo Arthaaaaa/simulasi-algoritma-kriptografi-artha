@@ -13,7 +13,7 @@ Setiap modul dilengkapi dengan fitur **"Tampilkan Solusi Penyelesaian"** yang me
 ## Teknologi
 - HTML5, CSS3, JavaScript (Vanilla / ES6)
 - Desain UI: Dark Mode, Glassmorphism
-- Server: Node.js & Express (untuk hosting di Railway)
+- Server: Node.js & Express (lokal) / Vercel (Produksi)
 
 ## Cara Menjalankan Secara Lokal
 
@@ -33,9 +33,11 @@ Setiap modul dilengkapi dengan fitur **"Tampilkan Solusi Penyelesaian"** yang me
    ```
 5. Buka browser dan akses: `http://localhost:3000`
 
-## Deployment di Railway
-Aplikasi ini dikonfigurasi menggunakan Express JS (`server.js`) untuk melayani file statis dan siap untuk langsung di-deploy melalui GitHub terintegrasi di Railway.
+## Deployment di Vercel
+Aplikasi ini dikonfigurasi sebagai Single Page Application (SPA) murni dengan `vercel.json` dan siap untuk langsung di-deploy secara gratis melalui Vercel.
 
-1. Hubungkan repo GitHub di dashboard Railway (`Deploy from GitHub Repo`).
-2. Railway otomatis mengenali environment Node.js dan mengeksekusi `npm start`.
-3. Pasang custom domain (`.my.id`) melalui menu Settings > Networking di dashboard Railway.
+1. Buka [Vercel.com](https://vercel.com) dan login menggunakan akun GitHub kamu.
+2. Klik **Add New...** -> **Project**.
+3. Import repository GitHub kamu.
+4. Framework Preset biarkan default (Other), lalu klik **Deploy**.
+5. Pasang custom domain (`.my.id`) melalui menu Settings > Domains di dashboard Vercel.
