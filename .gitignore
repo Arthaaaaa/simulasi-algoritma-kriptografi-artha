@@ -4,3 +4,7 @@ node_modules/
 *.log
 *.png
 *.pdf
+Laporan_UAS_Kriptografi.md
+package.json
+package-lock.json
+server.js
